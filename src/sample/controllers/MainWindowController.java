@@ -12,10 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import sample.triggers.SecondWindowTrigger;
 
 /*
 Главное окно с выбором "Педагогического направления развития ребёнка"
-Необходимо оптимизировать код
  */
 public class MainWindowController {
 
@@ -49,16 +49,16 @@ public class MainWindowController {
     @FXML
     void initialize()  {
 
-        i_v1.setImage(new Image("./sample/images/физическое развитие/физическоеРазвитие.png"));
-        i_v2.setImage(new Image("./sample/images/интелектуальное развитие/интелектуальноеРазвитие.png"));
-        i_v3.setImage(new Image("./sample/images/творческое развитие/творческоеРазвитие.png"));
+        i_v1.setImage(new Image("/sample/images/физическое развитие/физическоеРазвитие.png"));
+        i_v2.setImage(new Image("/sample/images/интелектуальное развитие/интелектуальноеРазвитие.png"));
+        i_v3.setImage(new Image("/sample/images/творческое развитие/творческоеРазвитие.png"));
 
         button_1.setOnAction(event ->{
             button_1.getScene().getWindow().hide();  //вызов сцены элемента.вызов окна элемента. скрыть
+            SecondWindowTrigger.setQuestionsListForSecondWindow(1);
 
         FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(getClass().getResource("/sample/windows/mainWindow.fxml"));
+        loader.setLocation(getClass().getResource("/sample/windows/secondWindow.fxml"));
 
         try {
             loader.load();
@@ -69,18 +69,19 @@ public class MainWindowController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-//            stage.setResizable(false);
-//            stage.setMaximized(true);
+            stage.setResizable(false);
+            stage.setMaximized(true);
         stage.showAndWait();
 
       });
 
         button_2.setOnAction(event ->{
             button_2.getScene().getWindow().hide();  //вызов сцены элемента.вызов окна элемента. скрыть
+            SecondWindowTrigger.setQuestionsListForSecondWindow(2);
 
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("sample/windows/mainWindow.fxml"));
+            loader.setLocation(getClass().getResource("/sample/windows/secondWindow.fxml"));
 
             try {
                 loader.load();
@@ -92,18 +93,19 @@ public class MainWindowController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-//            stage.setResizable(false);
-//            stage.setMaximized(true);
+            stage.setResizable(false);
+            stage.setMaximized(true);
             stage.showAndWait();
 
         });
 
         button_3.setOnAction(event ->{
             button_3.getScene().getWindow().hide();  //вызов сцены элемента.вызов окна элемента. скрыть
+            SecondWindowTrigger.setQuestionsListForSecondWindow(3);
 
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("sample/windows/mainWindow.fxml"));
+            loader.setLocation(getClass().getResource("/sample/windows/secondWindow.fxml"));
 
             try {
                 loader.load();
@@ -115,8 +117,8 @@ public class MainWindowController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-//            stage.setResizable(false);
-//            stage.setMaximized(true);
+            stage.setResizable(false);
+            stage.setMaximized(true);
             stage.showAndWait();
 
         });

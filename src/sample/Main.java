@@ -15,9 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("./windows/mainWindow.fxml"));
         primaryStage.setTitle("Выбор игрушки для ребёнка");
-//        primaryStage.setScene(new Scene(root,1024,768));
         primaryStage.setScene(new Scene(root));
-
         primaryStage.setResizable(false);
         primaryStage.setMaximized(true);
         primaryStage.show();
