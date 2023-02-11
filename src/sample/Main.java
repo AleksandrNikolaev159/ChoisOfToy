@@ -13,11 +13,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("./windows/mainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/mainView.fxml"));
         primaryStage.setTitle("Выбор игрушки для ребёнка");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setResizable(false);
-        primaryStage.setMaximized(true);
+        primaryStage.setMinWidth(1200);
+        primaryStage.setMinHeight(900);
+        primaryStage.setWidth(1200);
+        primaryStage.setHeight(900);
         primaryStage.show();
 
     }

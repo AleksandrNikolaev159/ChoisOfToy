@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainViewController">
+   <children>
+      <AnchorPane layoutY="123.0" prefHeight="777.0" prefWidth="1200.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Button fx:id="firstButton" layoutX="61.0" layoutY="29.0" mnemonicParsing="false" prefHeight="220.0" prefWidth="407.0" textAlignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="secondButton" layoutX="62.0" layoutY="279.0" mnemonicParsing="false" prefHeight="220.0" prefWidth="407.0" textAlignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="thirdButton" layoutX="61.0" layoutY="527.0" mnemonicParsing="false" prefHeight="220.0" prefWidth="407.0" textAlignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="firstImage" fitHeight="220.0" fitWidth="731.0" layoutX="468.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="secondImage" fitHeight="220.0" fitWidth="731.0" layoutX="468.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="thirdImage" fitHeight="220.0" fitWidth="731.0" layoutX="468.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="resultImage" fitHeight="676.0" fitWidth="1078.0" layoutX="61.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+         </children></AnchorPane>
+      <Label fx:id="header" layoutX="262.0" layoutY="40.0" textFill="#ece6e6">
+      <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
