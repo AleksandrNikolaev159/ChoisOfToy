@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -682,10 +683,12 @@ public class MainViewController {
         return result;
     }
 
+    public static JFXPanel panel;
     /*
     Загружает FXML файл
      */
     static void loadFileByFxmlLoader(){
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(MainViewController.class.getResource("/sample/view/mainView.fxml"));
 
@@ -693,17 +696,18 @@ public class MainViewController {
             loader.load();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+            stage.show();
+//            stage.close();
         }
 
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.centerOnScreen();
-//        stage.setMinWidth(1200);
-//        stage.setMinHeight(900);
-//        stage.setWidth(1200);
-//        stage.setHeight(900);
-        stage.showAndWait();
+
+
     }
 
     /*
@@ -747,6 +751,9 @@ public class MainViewController {
     private ImageView resultImage;
 
     @FXML
+    private Button onMain;
+
+    @FXML
     void initialize()  {
         System.out.println("Текущий признак = " + sign);
         formDto = getDtoBySign(sign);
@@ -754,6 +761,7 @@ public class MainViewController {
 
         if (formDtoObjectFieldValidation(formDto,DtoFields.FirstButton)){
             makeButtonInvisible(firstButton);
+
         } else {
             firstButton.setText(formDto.getFirstButton());
         }
@@ -790,26 +798,35 @@ public class MainViewController {
 
         if (formDtoObjectFieldValidation(formDto,DtoFields.ResultImage)){
             makeImageInvisible(resultImage);
+            makeButtonInvisible(onMain);
         } else {
             resultImage.setImage(new Image(formDto.getResultImage()));
+            onMain.setText("На главную");
         }
 
 
         firstButton.setOnAction(event ->{
-            firstButton.getScene().getWindow();  //вызов сцены элемента.вызов окна элемента. скрыть
+            firstButton.getScene().getWindow().hide();
             sign = updatedSign(getCurrentSign(firstButton));
             loadFileByFxmlLoader();
+
       });
 
         secondButton.setOnAction(event ->{
-            secondButton.getScene().getWindow();  //вызов сцены элемента.вызов окна элемента. скрыть
+            secondButton.getScene().getWindow().hide();
             sign = updatedSign(getCurrentSign(secondButton));
             loadFileByFxmlLoader();
         });
 
         thirdButton.setOnAction(event ->{
-            thirdButton.getScene().getWindow();  //вызов сцены элемента.вызов окна элемента. скрыть
+            thirdButton.getScene().getWindow().hide();
             sign = updatedSign(getCurrentSign(thirdButton));
+            loadFileByFxmlLoader();
+        });
+
+        onMain.setOnAction(event ->{
+            onMain.getScene().getWindow().hide();
+            sign = "Main";
             loadFileByFxmlLoader();
         });
 
