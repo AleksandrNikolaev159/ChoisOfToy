@@ -27,6 +27,10 @@ public class MainViewController {
 
     static String sign = "Main";
 
+    static String lastSign ="";
+
+    private static List<String> historySign = new ArrayList<>();
+
     private static List<FormDto> formDtoList = new ArrayList<>();
 
     static {
@@ -754,6 +758,9 @@ public class MainViewController {
     private Button onMain;
 
     @FXML
+    private Button onLastStep;
+
+    @FXML
     void initialize()  {
         System.out.println("Текущий признак = " + sign);
         formDto = getDtoBySign(sign);
@@ -798,7 +805,7 @@ public class MainViewController {
 
         if (formDtoObjectFieldValidation(formDto,DtoFields.ResultImage)){
             makeImageInvisible(resultImage);
-            makeButtonInvisible(onMain);
+//            makeButtonInvisible(onMain);
         } else {
             resultImage.setImage(new Image(formDto.getResultImage()));
             onMain.setText("На главную");
@@ -807,6 +814,7 @@ public class MainViewController {
 
         firstButton.setOnAction(event ->{
             firstButton.getScene().getWindow().hide();
+            lastSign = sign;
             sign = updatedSign(getCurrentSign(firstButton));
             loadFileByFxmlLoader();
 
@@ -814,12 +822,14 @@ public class MainViewController {
 
         secondButton.setOnAction(event ->{
             secondButton.getScene().getWindow().hide();
+            lastSign = sign;
             sign = updatedSign(getCurrentSign(secondButton));
             loadFileByFxmlLoader();
         });
 
         thirdButton.setOnAction(event ->{
             thirdButton.getScene().getWindow().hide();
+            lastSign = sign;
             sign = updatedSign(getCurrentSign(thirdButton));
             loadFileByFxmlLoader();
         });
@@ -827,8 +837,17 @@ public class MainViewController {
         onMain.setOnAction(event ->{
             onMain.getScene().getWindow().hide();
             sign = "Main";
+            lastSign = sign;
             loadFileByFxmlLoader();
         });
+
+        onLastStep.setOnAction(event ->{
+            onLastStep.getScene().getWindow().hide();
+            lastSign = sign;
+            loadFileByFxmlLoader();
+        });
+
+
 
     }
 
