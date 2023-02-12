@@ -3,6 +3,7 @@ package sample.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXML;
@@ -27,9 +28,7 @@ public class MainViewController {
 
     static String sign = "Main";
 
-    static String lastSign ="";
-
-    private static List<String> historySign = new ArrayList<>();
+    private static List<String> signList = new ArrayList<>();
 
     private static List<FormDto> formDtoList = new ArrayList<>();
 
@@ -613,6 +612,24 @@ public class MainViewController {
     }
 
     /*
+    Обновлет список так, чтобы все элементы были уникальными
+     */
+    static void updateSignList(){
+        signList = signList.stream().distinct().collect(Collectors.toList());
+    }
+
+    /*
+    Возвращает предыдущий признак формы и удаляет при этом из списка признак текущей формы
+     */
+    static String getPreviousSign(){
+        String result ="";
+        updateSignList();
+        result = signList.get(signList.size() - 2);
+        signList.remove(signList.size() - 1);
+        return result;
+    }
+
+    /*
     Возвращает то DTO признак которых был указан
      */
      static FormDto getDtoBySign(String sign){
@@ -730,6 +747,10 @@ public class MainViewController {
         imageView.setFitWidth(0);
     }
 
+    /*
+
+     */
+
     @FXML
     private Button firstButton;
 
@@ -763,6 +784,7 @@ public class MainViewController {
     @FXML
     void initialize()  {
         System.out.println("Текущий признак = " + sign);
+        signList.add(sign);
         formDto = getDtoBySign(sign);
         header.setText(formDto.getHeader());
 
@@ -805,45 +827,49 @@ public class MainViewController {
 
         if (formDtoObjectFieldValidation(formDto,DtoFields.ResultImage)){
             makeImageInvisible(resultImage);
-//            makeButtonInvisible(onMain);
         } else {
             resultImage.setImage(new Image(formDto.getResultImage()));
             onMain.setText("На главную");
         }
 
+        if (sign.equals("Main")){
+            makeButtonInvisible(onLastStep);
+            makeButtonInvisible(onMain);
+        }
+
 
         firstButton.setOnAction(event ->{
             firstButton.getScene().getWindow().hide();
-            lastSign = sign;
             sign = updatedSign(getCurrentSign(firstButton));
+            signList.add(sign);
             loadFileByFxmlLoader();
 
       });
 
         secondButton.setOnAction(event ->{
             secondButton.getScene().getWindow().hide();
-            lastSign = sign;
             sign = updatedSign(getCurrentSign(secondButton));
+            signList.add(sign);
             loadFileByFxmlLoader();
         });
 
         thirdButton.setOnAction(event ->{
             thirdButton.getScene().getWindow().hide();
-            lastSign = sign;
             sign = updatedSign(getCurrentSign(thirdButton));
+            signList.add(sign);
             loadFileByFxmlLoader();
         });
 
         onMain.setOnAction(event ->{
             onMain.getScene().getWindow().hide();
             sign = "Main";
-            lastSign = sign;
+            signList.clear();
             loadFileByFxmlLoader();
         });
 
         onLastStep.setOnAction(event ->{
+            sign = getPreviousSign();
             onLastStep.getScene().getWindow().hide();
-            lastSign = sign;
             loadFileByFxmlLoader();
         });
 

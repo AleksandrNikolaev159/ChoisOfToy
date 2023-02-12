@@ -2,36 +2,55 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #2E3348;" stylesheets="componentStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1199.0" style="-fx-background-color: #2E3348;" stylesheets="componentStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainViewController">
    <children>
       <AnchorPane layoutY="123.0" prefHeight="777.0" prefWidth="1200.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Button fx:id="firstButton" layoutX="61.0" layoutY="29.0" mnemonicParsing="false" prefHeight="220.0" prefWidth="407.0" textAlignment="CENTER">
+            <ImageView fx:id="resultImage" fitHeight="676.0" fitWidth="1078.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="firstButton" layoutX="37.0" layoutY="30.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="506.0" text="Физическое развитие" textAlignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button fx:id="secondButton" layoutX="62.0" layoutY="279.0" mnemonicParsing="false" prefHeight="220.0" prefWidth="407.0" textAlignment="CENTER">
+            <Button fx:id="secondButton" layoutX="37.0" layoutY="258.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="506.0" text="Творческое развитие" textAlignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button fx:id="thirdButton" layoutX="61.0" layoutY="527.0" mnemonicParsing="false" prefHeight="220.0" prefWidth="407.0" textAlignment="CENTER">
+            <Button fx:id="thirdButton" layoutX="37.0" layoutY="483.0" mnemonicParsing="false" prefHeight="191.0" prefWidth="506.0" text="Интеллектуальное развитие" textAlignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <ImageView fx:id="firstImage" fitHeight="220.0" fitWidth="731.0" layoutX="468.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="secondImage" fitHeight="220.0" fitWidth="731.0" layoutX="468.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="thirdImage" fitHeight="220.0" fitWidth="731.0" layoutX="468.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="resultImage" fitHeight="676.0" fitWidth="1078.0" layoutX="61.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="onMain" layoutX="989.0" layoutY="708.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="150.0" />
+            <ImageView fx:id="firstImage" fitHeight="182.0" fitWidth="609.0" layoutX="580.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../IdeaProjects/ChoisOfToy/src/sample/images/физическое%20развитие/физическоеРазвитие.png" />
+               </image></ImageView>
+            <ImageView fx:id="secondImage" fitHeight="182.0" fitWidth="653.0" layoutX="580.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../IdeaProjects/ChoisOfToy/src/sample/images/творческое%20развитие/творческоеРазвитие.png" />
+               </image></ImageView>
+            <ImageView fx:id="thirdImage" fitHeight="206.0" fitWidth="634.0" layoutX="566.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../IdeaProjects/ChoisOfToy/src/sample/images/интелектуальное%20развитие/интелектуальноеРазвитие.png" />
+               </image></ImageView>
+            <Button fx:id="onLastStep" layoutX="708.0" layoutY="714.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Шаг назад">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="onMain" layoutX="918.0" layoutY="714.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="На главную">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
-      <Label fx:id="header" layoutX="271.0" layoutY="43.0" prefHeight="30.0" prefWidth="659.0" textAlignment="CENTER" textFill="#ece6e6">
+      <Label fx:id="header" alignment="CENTER" layoutX="15.0" layoutY="22.0" prefHeight="68.0" prefWidth="1171.0" text="Выберите направление развития вашего ребёнка" textAlignment="RIGHT" textFill="#ece6e6">
       <font>
             <Font name="System Bold" size="25.0" />
          </font>
